@@ -23,9 +23,9 @@
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `chaves_pix` (
-  `id` uuid NOT NULL,
+  `id` binary(16) NOT NULL,
   `chave` varchar(255) NOT NULL,
-  `id_conta` uuid NOT NULL,
+  `id_conta` binary(16) NOT NULL,
   `id_tipo_chave` smallint(6) NOT NULL,
   `cadastrada_em` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -53,7 +53,7 @@ UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `clientes` (
-  `id` uuid NOT NULL,
+  `id` binary(16) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `id_natureza` int(11) NOT NULL,
   `registro_nacional` varchar(100) NOT NULL,
@@ -81,13 +81,13 @@ UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contas` (
-  `id` uuid NOT NULL,
+  `id` binary(16) NOT NULL,
   `saldo` decimal(10,2) NOT NULL,
   `aberta_em` datetime NOT NULL,
   `agencia` char(4) NOT NULL,
   `numero` char(10) NOT NULL,
   `id_tipo` smallint(6) NOT NULL,
-  `id_cliente` uuid NOT NULL,
+  `id_cliente` binary(16) NOT NULL,
   `ispb_instituicao` char(8) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `contas_tipos_FK` (`id_tipo`),
@@ -115,8 +115,8 @@ UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `enderecos` (
-  `id` uuid NOT NULL,
-  `id_cliente` uuid NOT NULL,
+  `id` binary(16) NOT NULL,
+  `id_cliente` binary(16) NOT NULL,
   `logradouro` varchar(100) NOT NULL,
   `numero` smallint(6) DEFAULT NULL,
   `complemento` varchar(100) DEFAULT NULL,
@@ -358,12 +358,12 @@ UNLOCK TABLES;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `transacoes` (
-  `id` uuid NOT NULL,
+  `id` binary(16) NOT NULL,
   `valor` decimal(10,2) NOT NULL,
   `data` datetime NOT NULL,
   `mensagem` varchar(100) DEFAULT NULL,
-  `id_conta_origem` uuid NOT NULL,
-  `id_conta_destino` uuid NOT NULL,
+  `id_conta_origem` binary(16) NOT NULL,
+  `id_conta_destino` binary(16) NOT NULL,
   `id_tipo_iniciacao_pix` smallint(6) NOT NULL,
   `id_finalidade_pix` smallint(6) NOT NULL,
   PRIMARY KEY (`id`),
