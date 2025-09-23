@@ -35,6 +35,10 @@ public class Conta {
     @Column(name = "id_tipo", nullable = false)
     private int idTipo;
 
+    @ManyToOne
+    @JoinColumn(name = "id_tipo")
+    private TipoConta tipoConta;
+
     @Column(name = "id_cliente", nullable = false)
     private UUID idCliente;
 
@@ -95,6 +99,14 @@ public class Conta {
 
     public void setIdTipo(int idTipo) {
         this.idTipo = idTipo;
+    }
+
+    public TipoConta getTipoConta() {
+        return tipoConta;
+    }
+
+    public void setTipoConta(TipoConta tipoConta) {
+        this.tipoConta = tipoConta;
     }
 
     public UUID getIdCliente() {
