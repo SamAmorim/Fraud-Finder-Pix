@@ -2,6 +2,7 @@ package org.uam.sdm.pixapi.domain.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -11,8 +12,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "contas")
 public class Conta {
 
     @Id
@@ -36,22 +40,25 @@ public class Conta {
     private int idTipo;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo")
+    @JoinColumn(name = "id_tipo", insertable = false, updatable = false)
     private TipoConta tipoConta;
 
     @Column(name = "id_cliente", nullable = false)
     private UUID idCliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
     @Column(name = "ispb_instituicao", nullable = false, length = 8)
     private String ispbInstituicao;
 
     @ManyToOne
-    @JoinColumn(name = "ispb_instituicao")
+    @JoinColumn(name = "ispb_instituicao", insertable = false, updatable = false)
     private Instituicao instituicao;
+
+    @OneToMany(mappedBy = "conta")
+    private List<ChavePix> chavesPix;
 
     public UUID getId() {
         return id;
@@ -139,5 +146,13 @@ public class Conta {
 
     public void setInstituicao(Instituicao instituicao) {
         this.instituicao = instituicao;
+    }
+
+    public List<ChavePix> getChavesPix() {
+        return chavesPix;
+    }
+
+    public void setChavesPix(List<ChavePix> chavesPix) {
+        this.chavesPix = chavesPix;
     }
 }

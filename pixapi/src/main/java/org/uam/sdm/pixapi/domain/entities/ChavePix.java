@@ -10,8 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "chaves_pix")
 public class ChavePix {
 
     @Id
@@ -25,14 +27,14 @@ public class ChavePix {
     private UUID idConta;
 
     @ManyToOne
-    @JoinColumn(name = "id_conta")
+    @JoinColumn(name = "id_conta", insertable = false, updatable = false)
     private Conta conta;
 
     @Column(name = "id_tipo_chave", nullable = false)
     private int idTipoChave;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo_chave")
+    @JoinColumn(name = "id_tipo_chave", insertable = false, updatable = false)
     private TipoChavePix tipoChave;
 
     @Column(name = "cadastrada_em", nullable = false)

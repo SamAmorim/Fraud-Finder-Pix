@@ -12,8 +12,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "transacoes")
 public class Transacao {
 
     @Id
@@ -31,28 +33,28 @@ public class Transacao {
     private UUID idContaOrigem;
 
     @ManyToOne
-    @JoinColumn(name = "id_conta_origem")
+    @JoinColumn(name = "id_conta_origem", insertable = false, updatable = false)
     private Conta contaOrigem;
 
     @Column(name = "id_conta_destino", nullable = false)
     private UUID idContaDestino;
 
     @ManyToOne
-    @JoinColumn(name = "id_conta_destino")
+    @JoinColumn(name = "id_conta_destino", insertable = false, updatable = false)
     private Conta contaDestino;
 
     @Column(name = "id_tipo_iniciacao_pix", nullable = false)
     private int idTipoIniciacaoPix;
 
     @OneToOne
-    @JoinColumn(name = "id_tipo_iniciacao_pix")
+    @JoinColumn(name = "id_tipo_iniciacao_pix", insertable = false, updatable = false)
     private TipoIniciacaoPix tipoIniciacaoPix;
 
     @Column(name = "id_finalidade_pix", nullable = false)
     private int idFinalidadePix;
 
     @OneToOne
-    @JoinColumn(name = "id_finalidade_pix")
+    @JoinColumn(name = "id_finalidade_pix", insertable = false, updatable = false)
     private FinalidadePix finalidadePix;
 
     @Column(length = 100)

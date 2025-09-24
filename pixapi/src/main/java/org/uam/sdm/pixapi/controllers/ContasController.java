@@ -1,11 +1,13 @@
 package org.uam.sdm.pixapi.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uam.sdm.pixapi.domain.dto.contas.ObterContaPorChavePixResponse;
 import org.uam.sdm.pixapi.services.ContasService;
 
-@RestController(value = "/contas")
+@RestController
+@RequestMapping("contas")
 public class ContasController {
 
     private final ContasService contasService;
