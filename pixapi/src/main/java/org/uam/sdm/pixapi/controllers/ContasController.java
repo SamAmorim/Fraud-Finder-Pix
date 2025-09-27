@@ -1,6 +1,7 @@
 package org.uam.sdm.pixapi.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uam.sdm.pixapi.domain.dto.contas.ObterContaPorChavePixResponse;
@@ -17,7 +18,7 @@ public class ContasController {
     }
 
     @GetMapping("/chavePix/{chavePix}")
-    public ObterContaPorChavePixResponse obterPorChavePix(String chavePix) {
+    public ObterContaPorChavePixResponse obterPorChavePix(@PathVariable("chavePix") String chavePix) {
         return contasService.obterPorChavePix(chavePix);
     }
 }

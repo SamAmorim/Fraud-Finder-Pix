@@ -1,6 +1,9 @@
 package org.uam.sdm.pixapi.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uam.sdm.pixapi.domain.dto.transacoes.EnviarPixRequestDto;
@@ -18,7 +21,8 @@ public class TransacoesController {
     }
 
     @PostMapping("/pix")
-    public EnviarPixResponseDto enviarPix(EnviarPixRequestDto requestDto) {
-        return transacoesService.enviarPix(requestDto);
+    public ResponseEntity<EnviarPixResponseDto> enviarPix(@RequestBody EnviarPixRequestDto requestDto) {
+        var resposta = transacoesService.enviarPix(requestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
     }
 }

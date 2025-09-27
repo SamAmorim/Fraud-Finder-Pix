@@ -9,8 +9,9 @@ import org.uam.sdm.pixapi.domain.entities.Conta;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ContasMapper {
 
-    @Mapping(source = "cliente.nome", target = "nomeCliente")
-    @Mapping(source = "cliente.registroNacional", target = "registroNacionalCliente")
-    @Mapping(source = "instituicao.nome", target = "nomeInstituicao")
+    @Mapping(target = "nomeCliente", source = "cliente.nome")
+    @Mapping(target = "registroNacionalCliente", source = "cliente.registroNacional")
+    @Mapping(target = "ispbInstituicao", source = "instituicao.ispb")
+    @Mapping(target = "nomeInstituicao", source = "instituicao.nome")
     ObterContaPorChavePixResponse contaToObterContaPorChavePixResponse(Conta conta);
 }

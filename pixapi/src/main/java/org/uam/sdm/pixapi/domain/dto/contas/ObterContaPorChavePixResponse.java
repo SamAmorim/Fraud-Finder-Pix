@@ -6,5 +6,6 @@ public record ObterContaPorChavePixResponse(
     UUID id,
     String nomeCliente,
     String registroNacionalCliente,
+    String ispbInstituicao,
     String nomeInstituicao
 ) { }
