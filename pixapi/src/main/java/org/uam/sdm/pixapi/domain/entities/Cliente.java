@@ -23,11 +23,8 @@ public class Cliente {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(name = "id_natureza", nullable = false)
-    private int idNatureza;
-
     @ManyToOne
-    @JoinColumn(name = "id_natureza", insertable = false, updatable = false)
+    @JoinColumn(name = "id_natureza")
     private Natureza natureza;
 
     @Column(name = "registro_nacional", nullable = false, length = 100)
@@ -50,14 +47,6 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getIdNatureza() {
-        return idNatureza;
-    }
-
-    public void setIdNatureza(int idNatureza) {
-        this.idNatureza = idNatureza;
     }
 
     public Natureza getNatureza() {

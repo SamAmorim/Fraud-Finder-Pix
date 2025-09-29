@@ -36,25 +36,16 @@ public class Conta {
     @Column(nullable = false, length = 10)
     private String numero;
 
-    @Column(name = "id_tipo", nullable = false)
-    private int idTipo;
-
     @ManyToOne
-    @JoinColumn(name = "id_tipo", insertable = false, updatable = false)
+    @JoinColumn(name = "id_tipo")
     private TipoConta tipoConta;
 
-    @Column(name = "id_cliente", nullable = false)
-    private UUID idCliente;
-
     @ManyToOne
-    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @Column(name = "ispb_instituicao", nullable = false, length = 8)
-    private String ispbInstituicao;
-
     @ManyToOne
-    @JoinColumn(name = "ispb_instituicao", insertable = false, updatable = false)
+    @JoinColumn(name = "ispb_instituicao")
     private Instituicao instituicao;
 
     @OneToMany(mappedBy = "conta")
@@ -100,14 +91,6 @@ public class Conta {
         this.numero = numero;
     }
 
-    public int getIdTipo() {
-        return idTipo;
-    }
-
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
-    }
-
     public TipoConta getTipoConta() {
         return tipoConta;
     }
@@ -116,28 +99,12 @@ public class Conta {
         this.tipoConta = tipoConta;
     }
 
-    public UUID getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(UUID idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public String getIspbInstituicao() {
-        return ispbInstituicao;
-    }
-
-    public void setIspbInstituicao(String ispbInstituicao) {
-        this.ispbInstituicao = ispbInstituicao;
     }
 
     public Instituicao getInstituicao() {

@@ -21,7 +21,9 @@ public interface TransacoesMapper {
     @Mapping(target = "nomeContaDestinoCliente", source = "contaDestino.cliente.nome")
     @Mapping(target = "registroNacionalContaDestinoCliente", source = "contaDestino.cliente.registroNacional")
     @Mapping(target = "nomeContaDestinoInstituicao", source = "contaDestino.instituicao.nome")
+    @Mapping(target = "idFinalidadePix", source = "finalidadePix.id")
     @Mapping(target = "nomeFinalidadePix", source = "finalidadePix.nome")
+    @Mapping(target = "idTipoIniciacaoPix", source = "tipoIniciacaoPix.id")
     @Mapping(target = "nomeTipoIniciacaoPix", source = "tipoIniciacaoPix.nome")
     EnviarPixResponseDto transacaoToEnviarPixResponseDto(Transacao transacao);
 }

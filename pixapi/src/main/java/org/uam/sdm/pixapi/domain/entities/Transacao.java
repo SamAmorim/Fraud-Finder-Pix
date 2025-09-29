@@ -32,32 +32,20 @@ public class Transacao {
     @CreationTimestamp
     private LocalDateTime data;
 
-    @Column(name = "id_conta_origem", nullable = false)
-    private UUID idContaOrigem;
-
     @ManyToOne
-    @JoinColumn(name = "id_conta_origem", insertable = false, updatable = false)
+    @JoinColumn(name = "id_conta_origem")
     private Conta contaOrigem;
 
-    @Column(name = "id_conta_destino", nullable = false)
-    private UUID idContaDestino;
-
     @ManyToOne
-    @JoinColumn(name = "id_conta_destino", insertable = false, updatable = false)
+    @JoinColumn(name = "id_conta_destino")
     private Conta contaDestino;
 
-    @Column(name = "id_tipo_iniciacao_pix", nullable = false)
-    private int idTipoIniciacaoPix;
-
     @OneToOne
-    @JoinColumn(name = "id_tipo_iniciacao_pix", insertable = false, updatable = false)
+    @JoinColumn(name = "id_tipo_iniciacao_pix")
     private TipoIniciacaoPix tipoIniciacaoPix;
 
-    @Column(name = "id_finalidade_pix", nullable = false)
-    private int idFinalidadePix;
-
     @OneToOne
-    @JoinColumn(name = "id_finalidade_pix", insertable = false, updatable = false)
+    @JoinColumn(name = "id_finalidade_pix")
     private FinalidadePix finalidadePix;
 
     @Column(length = 100)
@@ -87,28 +75,12 @@ public class Transacao {
         this.data = data;
     }
 
-    public UUID getIdContaOrigem() {
-        return idContaOrigem;
-    }
-
-    public void setIdContaOrigem(UUID idContaOrigem) {
-        this.idContaOrigem = idContaOrigem;
-    }
-
     public Conta getContaOrigem() {
         return contaOrigem;
     }
 
     public void setContaOrigem(Conta contaOrigem) {
         this.contaOrigem = contaOrigem;
-    }
-
-    public UUID getIdContaDestino() {
-        return idContaDestino;
-    }
-
-    public void setIdContaDestino(UUID idContaDestino) {
-        this.idContaDestino = idContaDestino;
     }
 
     public Conta getContaDestino() {
@@ -119,28 +91,12 @@ public class Transacao {
         this.contaDestino = contaDestino;
     }
 
-    public int getIdTipoIniciacaoPix() {
-        return idTipoIniciacaoPix;
-    }
-
-    public void setIdTipoIniciacaoPix(int idTipoIniciacaoPix) {
-        this.idTipoIniciacaoPix = idTipoIniciacaoPix;
-    }
-
     public TipoIniciacaoPix getTipoIniciacaoPix() {
         return tipoIniciacaoPix;
     }
 
     public void setTipoIniciacaoPix(TipoIniciacaoPix tipoIniciacaoPix) {
         this.tipoIniciacaoPix = tipoIniciacaoPix;
-    }
-
-    public int getIdFinalidadePix() {
-        return idFinalidadePix;
-    }
-
-    public void setIdFinalidadePix(int idFinalidadePix) {
-        this.idFinalidadePix = idFinalidadePix;
     }
 
     public FinalidadePix getFinalidadePix() {

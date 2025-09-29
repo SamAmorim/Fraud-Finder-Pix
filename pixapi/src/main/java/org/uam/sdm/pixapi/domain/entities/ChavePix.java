@@ -31,7 +31,7 @@ public class ChavePix {
     private Conta conta;
 
     @Column(name = "id_tipo_chave", nullable = false)
-    private int idTipoChave;
+    private Integer idTipoChave;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_chave", insertable = false, updatable = false)
@@ -72,11 +72,11 @@ public class ChavePix {
         this.conta = conta;
     }
 
-    public int getIdTipoChave() {
+    public Integer getIdTipoChave() {
         return idTipoChave;
     }
 
-    public void setIdTipoChave(int idTipoChave) {
+    public void setIdTipoChave(Integer idTipoChave) {
         this.idTipoChave = idTipoChave;
     }
 

@@ -9,9 +9,9 @@ public record EnviarPixResponseDto(
     String nomeContaDestinoCliente,
     String registroNacionalContaDestinoCliente,
     String nomeContaDestinoInstituicao,
-    int idFinalidadePix,
+    Integer idFinalidadePix,
     String nomeFinalidadePix,
-    int idTipoIniciacaoPix,
+    Integer idTipoIniciacaoPix,
     String nomeTipoIniciacaoPix,
     String data,
     String mensagem

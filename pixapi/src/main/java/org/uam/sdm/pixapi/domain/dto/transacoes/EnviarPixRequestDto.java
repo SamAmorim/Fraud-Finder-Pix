@@ -7,7 +7,7 @@ public record EnviarPixRequestDto(
     BigDecimal valor,
     UUID idContaOrigem,
     UUID idContaDestino,
-    int idFinalidadePix,
-    int idTipoIniciacaoPix,
+    Integer idFinalidadePix,
+    Integer idTipoIniciacaoPix,
     String mensagem
 ) { }
