@@ -18,9 +18,9 @@ public interface TransacoesMapper {
     @Mapping(target = "tipoIniciacaoPix", ignore = true)
     Transacao enviarPixRequestDtoToTransacao(EnviarPixRequestDto enviarPixRequestDto);
 
-    @Mapping(target = "nomeContaDestinoCliente", source = "contaDestino.cliente.nome")
-    @Mapping(target = "registroNacionalContaDestinoCliente", source = "contaDestino.cliente.registroNacional")
-    @Mapping(target = "nomeContaDestinoInstituicao", source = "contaDestino.instituicao.nome")
+    @Mapping(target = "nomeClienteContaDestino", source = "contaDestino.cliente.nome")
+    @Mapping(target = "registroNacionalClienteContaDestino", source = "contaDestino.cliente.registroNacional")
+    @Mapping(target = "nomeInstituicaoContaDestino", source = "contaDestino.instituicao.nome")
     @Mapping(target = "idFinalidadePix", source = "finalidadePix.id")
     @Mapping(target = "nomeFinalidadePix", source = "finalidadePix.nome")
     @Mapping(target = "idTipoIniciacaoPix", source = "tipoIniciacaoPix.id")

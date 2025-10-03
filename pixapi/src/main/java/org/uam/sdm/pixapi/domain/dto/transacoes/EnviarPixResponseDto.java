@@ -6,9 +6,9 @@ import java.util.UUID;
 public record EnviarPixResponseDto(
     UUID id,
     BigDecimal valor,
-    String nomeContaDestinoCliente,
-    String registroNacionalContaDestinoCliente,
-    String nomeContaDestinoInstituicao,
+    String nomeClienteContaDestino,
+    String registroNacionalClienteContaDestino,
+    String nomeInstituicaoContaDestino,
     Integer idFinalidadePix,
     String nomeFinalidadePix,
     Integer idTipoIniciacaoPix,
