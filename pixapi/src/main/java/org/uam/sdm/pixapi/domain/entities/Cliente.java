@@ -1,6 +1,7 @@
 package org.uam.sdm.pixapi.domain.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,6 +34,9 @@ public class Cliente {
 
     @Column(name = "nascido_em", nullable = false)
     private LocalDate nascidoEm;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Endereco> enderecos;
 
     public UUID getId() {
         return id;
@@ -71,5 +76,13 @@ public class Cliente {
 
     public void setNascidoEm(LocalDate nascidoEm) {
         this.nascidoEm = nascidoEm;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 }
