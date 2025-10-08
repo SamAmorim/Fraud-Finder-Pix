@@ -2,6 +2,7 @@ package org.uam.sdm.pixapi.services.impl;
 
 import org.springframework.stereotype.Service;
 import org.uam.sdm.pixapi.domain.dto.contas.ObterContaPorChavePixResponse;
+import org.uam.sdm.pixapi.exceptions.RecursoNaoEncontradoException;
 import org.uam.sdm.pixapi.mappers.ContasMapper;
 import org.uam.sdm.pixapi.repository.ContasRepository;
 import org.uam.sdm.pixapi.services.ContasService;
@@ -19,8 +20,11 @@ public class ContasServiceImpl implements ContasService {
 
     @Override
     public ObterContaPorChavePixResponse obterPorChavePix(String chavePix) {
-        var conta = contasRepository.findByChavesPix_Chave(chavePix);
-        var response = contasMapper.contaToObterContaPorChavePixResponse(conta);
-        return response;
+        var conta = contasRepository
+                .findByChavesPix_Chave(chavePix)
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Conta não encontrada para a chave PIX informada"));
+
+        var resposta = contasMapper.contaToObterContaPorChavePixResponse(conta);
+        return resposta;
     }
 }

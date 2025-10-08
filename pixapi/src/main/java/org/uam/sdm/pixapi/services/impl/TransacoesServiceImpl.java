@@ -1,10 +1,12 @@
 package org.uam.sdm.pixapi.services.impl;
 
-import org.springframework.http.HttpStatus;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import org.uam.sdm.pixapi.domain.dto.transacoes.EnviarPixRequestDto;
 import org.uam.sdm.pixapi.domain.dto.transacoes.EnviarPixResponseDto;
+import org.uam.sdm.pixapi.domain.entities.Transacao;
+import org.uam.sdm.pixapi.exceptions.RecursoNaoEncontradoException;
 import org.uam.sdm.pixapi.mappers.TransacoesMapper;
 import org.uam.sdm.pixapi.repository.ContasRepository;
 import org.uam.sdm.pixapi.repository.FinalidadesPixRepository;
@@ -26,7 +28,8 @@ public class TransacoesServiceImpl implements TransacoesService {
             FinalidadesPixRepository finalidadesPixRepository,
             TiposIniciacaoPixRepository tiposIniciacaoPixRepository,
             TransacoesRepository transacoesRepository,
-            TransacoesMapper transacoesMapper) {
+            TransacoesMapper transacoesMapper
+    ) {
 
         this.contasRepository = contasRepository;
         this.finalidadesPixRepository = finalidadesPixRepository;
@@ -39,32 +42,47 @@ public class TransacoesServiceImpl implements TransacoesService {
     public EnviarPixResponseDto enviarPix(EnviarPixRequestDto requestDto) {
         var transacao = transacoesMapper.enviarPixRequestDtoToTransacao(requestDto);
 
-        var contaOrigem = contasRepository
-                .findById(requestDto.idContaOrigem())
-                .orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conta de origem não encontrada"));
-
-        transacao.setContaOrigem(contaOrigem);
-
-        var contaDestino = contasRepository
-                .findById(requestDto.idContaDestino())
-                .orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Conta de destino não encontrada"));
-
-        transacao.setContaDestino(contaDestino);
-
-        var finalidadePix = finalidadesPixRepository
-                .getReferenceById(requestDto.idFinalidadePix());
-
-        transacao.setFinalidadePix(finalidadePix);
-
-        var tipoIniciacaoPix = tiposIniciacaoPixRepository
-                .getReferenceById(requestDto.idTipoIniciacaoPix());
-
-        transacao.setTipoIniciacaoPix(tipoIniciacaoPix);
+        buscarRelacionamentosTransacao(
+                transacao,
+                requestDto.idContaOrigem(),
+                requestDto.idContaDestino(),
+                requestDto.idFinalidadePix(),
+                requestDto.idTipoIniciacaoPix()
+        );
 
         transacao = transacoesRepository.save(transacao);
         var resposta = transacoesMapper.transacaoToEnviarPixResponseDto(transacao);
         return resposta;
+    }
+
+    private void buscarRelacionamentosTransacao(
+            Transacao transacao,
+            UUID idContaOrigem,
+            UUID idContaDestino,
+            Integer idFinalidadePix,
+            Integer idTipoIniciacaoPix
+    ) {
+
+        var contaOrigem = contasRepository
+                .findById(idContaOrigem)
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Conta de origem não encontrada"));
+
+        transacao.setContaOrigem(contaOrigem);
+
+        var contaDestino = contasRepository
+                .findById(idContaDestino)
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Conta de destino não encontrada"));
+
+        transacao.setContaDestino(contaDestino);
+
+        var finalidadePix = finalidadesPixRepository
+                .getReferenceById(idFinalidadePix);
+
+        transacao.setFinalidadePix(finalidadePix);
+
+        var tipoIniciacaoPix = tiposIniciacaoPixRepository
+                .getReferenceById(idTipoIniciacaoPix);
+
+        transacao.setTipoIniciacaoPix(tipoIniciacaoPix);
     }
 }
