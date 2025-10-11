@@ -6,7 +6,7 @@ export default function Icon({
 }: IconProps) {
 
     return (
-        <span className={`material-symbols-rounded ${className}`}>
+        <span className={`material-symbols-outlined ${className}`}>
             {children}
         </span>
     )

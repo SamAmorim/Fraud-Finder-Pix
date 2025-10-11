@@ -1,9 +1,20 @@
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Icon from "components/icon";
+import Box from "@mui/material/Box"
+import IconButton from "@mui/material/IconButton"
+import Typography from "@mui/material/Typography"
+import Icon from "components/icon"
+import { useMatches } from "react-router"
+import type { RouteLoaderData, RouteMatch } from "typesrc/pages"
 
 export default function Header() {
+
+    const matches = useMatches() as RouteMatch[]
+
+    const activePage = matches.at(-1)
+    const data = activePage?.loaderData
+
+    const title = typeof activePage?.handle.title === "function"
+        ? activePage?.handle?.title(data as RouteLoaderData)
+        : activePage?.handle?.title || ""
 
     return (
         <Box
@@ -14,7 +25,7 @@ export default function Header() {
             <Box className="w-16">
                 <IconButton>
                     <Icon className="text-white">
-                        arrow_back
+                        chevron_left
                     </Icon>
                 </IconButton>
             </Box>
@@ -23,9 +34,8 @@ export default function Header() {
                 color="primary.contrastText"
                 variant="h6"
                 className="w-full text-center"
-                fontWeight="bold"
             >
-                Pix
+                {title}
             </Typography>
             <Box className="w-16">
             </Box>
