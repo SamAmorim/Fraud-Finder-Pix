@@ -9,8 +9,28 @@ import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
 import Icon from "components/icon"
+import { useEffect, useState } from "react"
+import { useLocation } from "react-router"
+import pixService from "../../services/pixService"
+import type { ObterContaPorChavePixResponse } from "typesrc/services/pixService/ObterContaPorChavePixResponse"
 
 export default function PixValor() {
+
+    const { state } = useLocation()
+
+    const [conta, setConta] = useState<ObterContaPorChavePixResponse>()
+
+    async function fetchConta() {
+        console.log(state)
+        if (state && state.chavePix) {
+            const response = await pixService.obterContaPorChavePix(state.chavePix)
+            setConta(response)
+        }
+    }
+
+    useEffect(() => {
+        fetchConta()
+    }, [])
 
     return (
             <>
@@ -32,13 +52,13 @@ export default function PixValor() {
                             </CardMedia>
                             <CardContent>
                                 <Typography>
-                                    Pix para: <span className="font-semibold">Fulano de Tal</span>
+                                    Pix para: <span className="font-semibold">{conta?.nomeCliente}</span>
                                 </Typography>
                                 <Typography>
-                                    CPF/CNPJ: <span className="font-semibold">123.***.***-90</span>
+                                    CPF/CNPJ: <span className="font-semibold">{conta?.registroNacionalCliente}</span>
                                 </Typography>
                                 <Typography>
-                                    Instituição: <span className="font-semibold">NU PAGAMENTOS</span>
+                                    Instituição: <span className="font-semibold">{conta?.nomeInstituicao}</span>
                                 </Typography>
                             </CardContent>
                         </Card>

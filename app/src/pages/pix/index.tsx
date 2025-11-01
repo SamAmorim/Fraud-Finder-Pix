@@ -16,7 +16,7 @@ export default function Pix() {
 
     function handleContinue() {
         if (isValid)
-            navigate("/pix/confirm", { state: { chavePix } })
+            navigate("/pix/valor", { state: { chavePix } })
     }
 
     useEffect(() => {
