@@ -3,8 +3,26 @@ import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
+import { useEffect, useState } from "react"
+import { validateChavePix } from "../../util/validations/index"
+import { useNavigate } from "react-router"
 
 export default function Pix() {
+
+    const navigate = useNavigate()
+    
+    const [chavePix, setChavePix] = useState<string>("")
+    const [isValid, setIsValid] = useState<boolean>(false)
+
+    function handleContinue() {
+        if (isValid)
+            navigate("/pix/confirm", { state: { chavePix } })
+    }
+
+    useEffect(() => {
+        const isValidChave = validateChavePix(chavePix)
+        setIsValid(isValidChave)
+    }, [chavePix])
 
     return (
         <>
@@ -22,6 +40,8 @@ export default function Pix() {
                         fullWidth
                         placeholder="E-mail, CPF ou telefone"
                         label="Digitar a chave Pix"
+                        value={chavePix}
+                        onChange={(e) => setChavePix(e.target.value)}
                     />
                 </Box>
                 <Box className="p-4">
@@ -31,6 +51,8 @@ export default function Pix() {
                         size="large"
                         fullWidth
                         className="self-baseline"
+                        disabled={!isValid}
+                        onClick={handleContinue}
                     >
                         Continuar
                     </Button>
