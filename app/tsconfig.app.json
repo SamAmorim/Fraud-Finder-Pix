@@ -10,14 +10,16 @@
     "typeRoots": [
       "./src/types/definitions"
     ],
-    "baseUrl": "./src/",
+    "baseUrl": "./src",
     "paths": {
       "@mui/material/*": ["node_modules/@mui/material/*"],
-      "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
-      "pages/*": ["pages/*"],
-      "typesrc/*": ["types/*"],
-      "utils/*": ["utils/*"]
+      "assets/*": ["./assets/*"],
+      "components/*": ["./components/*"],
+      "context/*": ["./context/*"],
+      "pages/*": ["./pages/*"],
+      "services/*": ["./services/*"],
+      "typesrc/*": ["./types/*"],
+      "utils/*": ["./utils/*"]
     },
 
     /* Bundler mode */

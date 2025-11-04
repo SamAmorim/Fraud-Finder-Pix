@@ -3,20 +3,28 @@ import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
+import { usePixContext } from "context/pix/pixContext"
 import { useEffect, useState } from "react"
-import { validateChavePix } from "../../util/validations/index"
 import { useNavigate } from "react-router"
+import pixService from "services/pixService"
+import { validateChavePix } from "utils/validations/index"
 
 export default function Pix() {
 
     const navigate = useNavigate()
-    
+    const { setConta } = usePixContext()
+
     const [chavePix, setChavePix] = useState<string>("")
     const [isValid, setIsValid] = useState<boolean>(false)
 
-    function handleContinue() {
-        if (isValid)
-            navigate("/pix/valor", { state: { chavePix } })
+    async function handleContinue() {
+        if (!isValid) return
+
+        const response = await pixService.obterContaPorChavePix(chavePix)
+        if (response && response.id) {
+            setConta(response)
+            navigate("/pix/valor")
+        }
     }
 
     useEffect(() => {

@@ -4,6 +4,7 @@ import type { RouteHandle } from "typesrc/pages"
 import Inicio from "."
 import Pix from "./pix"
 import PixValor from "./pix/valor"
+import PixContextProvider from "components/providers/pix/PixProvider"
 
 const routes = createBrowserRouter([
     {
@@ -19,6 +20,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/pix",
+                Component: PixContextProvider,
                 children: [
                     {
                         index: true,
