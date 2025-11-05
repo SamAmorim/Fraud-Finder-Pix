@@ -1,25 +1,50 @@
 import azure.functions as func
 import logging
+import json
+from pydantic import BaseModel, ValidationError
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+app = func.FunctionApp()
 
-@app.route(route="analisar")
+class AccountData(BaseModel):
+    id: int
+    name: str
+    account_type: str
+
+@app.route(route="analisar", methods=["POST"])
 def analisar(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
-    else:
+    try:
+        req_body = req.get_json()
+    except ValueError:
         return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
-             status_code=200
+            json.dumps({
+                "status": "error",
+                "message": "Invalid JSON payload. Request body must be a valid JSON object."
+            }),
+            status_code=400,
+            mimetype="application/json"
         )
+
+    try:
+        data = AccountData(**req_body)
+    except ValidationError as e:
+        return func.HttpResponse(
+            json.dumps({
+                "status": "error",
+                "message": "Invalid input.",
+                "details": e.errors()
+            }),
+            status_code=400,
+            mimetype="application/json"
+        )
+
+    return func.HttpResponse(
+        json.dumps({
+            "status": "success",
+            "message": "Account data received.",
+            "data": data.model_dump()
+        }),
+        status_code=200,
+        mimetype="application/json"
+    )
