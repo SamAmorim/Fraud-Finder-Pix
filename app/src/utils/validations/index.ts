@@ -40,9 +40,9 @@ export function isTelefone(telefone: string): boolean {
     const cleanTel = telefone.replace(/\D/g, "");
     const length = cleanTel.length;
 
-    if (length < 8 || length > 11) return false;
+    if (length != 11) return false;
 
-    return /^\d{8,11}$/.test(cleanTel) || TELEFONE_REGEX.test(telefone);
+    return /^\d{11}$/.test(cleanTel) || TELEFONE_REGEX.test(telefone);
 };
 
 /**

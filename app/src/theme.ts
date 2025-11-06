@@ -67,6 +67,11 @@ const theme = createTheme({
                 },
             }
         },
+        MuiCircularProgress: {
+            defaultProps: {
+                size: "1.5rem",
+            },
+        },
     }
 })
 
