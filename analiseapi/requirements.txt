@@ -3,4 +3,9 @@
 # azure-monitor-opentelemetry
 
 azure-functions
- pydantic
+pydantic
+tensorflow==2.16.1
+numpy
+pandas
+scikeras==0.13.0
+joblib
