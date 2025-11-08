@@ -86,7 +86,7 @@ export default function Pix() {
                         size="large"
                         fullWidth
                         className="self-baseline"
-                        disabled={!isValid || isLoading}
+                        disabled={!isValid || isLoading || !!errorMessage}
                         onClick={handleContinue}
                     >
                         {isLoading ?

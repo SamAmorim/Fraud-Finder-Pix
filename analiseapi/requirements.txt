@@ -4,7 +4,7 @@
 
 azure-functions
 pydantic
-tensorflow==2.16.1
+tensorflow-intel
 numpy
 pandas
 scikeras==0.13.0

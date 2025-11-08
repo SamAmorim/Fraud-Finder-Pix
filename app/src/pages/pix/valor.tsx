@@ -19,21 +19,19 @@ export default function PixValor() {
         <>
             <HeaderDetail />
             <Box className="flex flex-col h-full">
-                <Box className="flex flex-1 flex-col p-4 gap-6 h-full overflow-auto">
+                <Box className="flex flex-col p-4 gap-6 h-full overflow-y-auto">
                     <Link color="primary.contrastText">
                         <Icon className="text-[length:inherit]!">info</Icon> Horários, limites e outras informações.
                     </Link>
-                    <Card className="flex h-max">
+                    <Card className="flex overflow-visible">
                         <CardMedia className="flex items-center p-4">
-                            <Avatar
-                                className="bg-green-100"
-                            >
+                            <Avatar className="bg-green-100">
                                 <Icon className="text-green-500">
                                     attach_money
                                 </Icon>
                             </Avatar>
                         </CardMedia>
-                        <CardContent>
+                        <CardContent className="flex flex-col">
                             <Typography>
                                 Pix para: <span className="font-semibold">{conta?.nomeCliente}</span>
                             </Typography>

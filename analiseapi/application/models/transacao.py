@@ -1,0 +1,29 @@
+from pydantic import BaseModel
+
+class Transacao(BaseModel):
+    valor_transacao: float
+    data_transacao: str
+    tipo_iniciacao_pix_id: int
+    finalidade_pix_id: int
+    pagador_saldo: float
+    pagador_conta_aberta_em: str
+    pagador_tipo_conta_id: int
+    pagador_natureza_id: int
+    pagador_data_nascimento: str
+    recebedor_saldo: float
+    recebedor_conta_aberta_em: str
+    recebedor_tipo_conta_id: int
+    recebedor_natureza_id: int
+    recebedor_data_nascimento: str
+    pagador_txs_ultimas_24h: int
+    pagador_valor_ultimas_24h: float
+    recebedor_txs_ultima_1h: int
+    recebedor_valor_ultima_1h: float
+    pagador_segundos_desde_ultima_tx: int
+    primeira_interacao: int
+    pagador_interacoes_com_recebedor: int
+    recebedor_num_pagadores_unicos_24h: int
+    recebedor_idade_conta_dias: int
+    pagador_idade_conta_dias: int
+    valor_vs_media_pagador_30d: float
+    valor_vs_saldo_pagador: float
