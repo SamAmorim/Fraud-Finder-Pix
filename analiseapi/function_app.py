@@ -1,21 +1,14 @@
 import azure.functions as func
 import logging
-import sys
 import json
 from pydantic import ValidationError
 from application.services import analise_service
-from pathlib import Path
 from application.models.transacao import Transacao
-
-# Add project root to Python path
-project_root = str(Path(__file__).resolve().parents[2])  # Adjust the number based on your folder structure
-if project_root not in sys.path:
-    sys.path.append(project_root)
 
 app = func.FunctionApp()
 
-@app.route(route="analisar", methods=["POST"])
-def analisar(req: func.HttpRequest) -> func.HttpResponse:
+@app.route(route="fazer_analise", methods=["POST"])
+def fazer_analise(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     try:
@@ -23,7 +16,7 @@ def analisar(req: func.HttpRequest) -> func.HttpResponse:
     except ValueError:
         return func.HttpResponse(
             json.dumps({
-                "status": "error",
+                "success": False,
                 "message": "Invalid JSON payload. Request body must be a valid JSON object."
             }),
             status_code=400,
@@ -35,7 +28,7 @@ def analisar(req: func.HttpRequest) -> func.HttpResponse:
     except ValidationError as e:
         return func.HttpResponse(
             json.dumps({
-                "status": "error",
+                "success": False,
                 "message": "Invalid input.",
                 "details": e.errors()
             }),
@@ -43,13 +36,13 @@ def analisar(req: func.HttpRequest) -> func.HttpResponse:
             mimetype="application/json"
         )
 
-    analise_service.rodar(data)
+    resultado = analise_service.rodar(data)
 
     return func.HttpResponse(
         json.dumps({
-            "status": "success",
-            "message": "Account data received.",
-            "data": data.model_dump()
+            "success": True,
+            "message": "Analysis completed.",
+            "data": resultado
         }),
         status_code=200,
         mimetype="application/json"
