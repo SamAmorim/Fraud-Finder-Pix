@@ -1,12 +1,17 @@
 package org.uam.sdm.pixapi.services.impl;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.uam.sdm.pixapi.domain.dto.transacoes.AnalisarTransacaoDto;
 import org.uam.sdm.pixapi.domain.dto.transacoes.EnviarPixRequestDto;
 import org.uam.sdm.pixapi.domain.dto.transacoes.EnviarPixResponseDto;
 import org.uam.sdm.pixapi.domain.entities.Transacao;
 import org.uam.sdm.pixapi.exceptions.RecursoNaoEncontradoException;
+import org.uam.sdm.pixapi.exceptions.TransacaoBloqueadaException;
+import org.uam.sdm.pixapi.integrations.AnaliseIntegration;
 import org.uam.sdm.pixapi.mappers.TransacoesMapper;
 import org.uam.sdm.pixapi.repository.ContasRepository;
 import org.uam.sdm.pixapi.repository.FinalidadesPixRepository;
@@ -17,6 +22,7 @@ import org.uam.sdm.pixapi.services.TransacoesService;
 @Service
 public class TransacoesServiceImpl implements TransacoesService {
 
+	private final AnaliseIntegration analiseIntegration;
     private final ContasRepository contasRepository;
     private final FinalidadesPixRepository finalidadesPixRepository;
     private final TiposIniciacaoPixRepository tiposIniciacaoPixRepository;
@@ -24,13 +30,14 @@ public class TransacoesServiceImpl implements TransacoesService {
     private final TransacoesMapper transacoesMapper;
 
     public TransacoesServiceImpl(
+			AnaliseIntegration analiseIntegration,
             ContasRepository contasRepository,
             FinalidadesPixRepository finalidadesPixRepository,
             TiposIniciacaoPixRepository tiposIniciacaoPixRepository,
             TransacoesRepository transacoesRepository,
             TransacoesMapper transacoesMapper
     ) {
-
+		this.analiseIntegration = analiseIntegration;
         this.contasRepository = contasRepository;
         this.finalidadesPixRepository = finalidadesPixRepository;
         this.tiposIniciacaoPixRepository = tiposIniciacaoPixRepository;
@@ -50,6 +57,40 @@ public class TransacoesServiceImpl implements TransacoesService {
                 requestDto.idTipoIniciacaoPix()
         );
 
+		var analisarTransacaoDto = new AnalisarTransacaoDto(
+			requestDto.valor(),
+			LocalDateTime.now(),
+			requestDto.idTipoIniciacaoPix(),
+			requestDto.idFinalidadePix(),
+			BigDecimal.valueOf(20.00),
+			LocalDateTime.parse("2020-05-10T10:15:30"),
+			1,
+			1,
+			LocalDateTime.parse("1985-01-15T00:00:00"),
+			BigDecimal.valueOf(20.00),
+			LocalDateTime.parse("2019-11-20T14:30:00"),
+			1,
+			1,
+			LocalDateTime.parse("1990-03-22T00:00:00"),
+			2,
+			BigDecimal.valueOf(20.00),
+			0,
+			BigDecimal.valueOf(20.00),
+			10,
+			0,
+			200,
+			10,
+			1,
+			1,
+			BigDecimal.valueOf(20.00),
+			BigDecimal.valueOf(20.00)
+		);
+
+		var aprovado = analiseIntegration.analisarPix(analisarTransacaoDto).block();
+		if (aprovado == null || !aprovado) {
+			throw new TransacaoBloqueadaException("Transação bloqueada pela análise de fraude");
+		}
+		
         transacao = transacoesRepository.save(transacao);
         var resposta = transacoesMapper.transacaoToEnviarPixResponseDto(transacao);
         return resposta;
