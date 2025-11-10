@@ -1,3 +1,4 @@
+import { Alert, CircularProgress, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import Avatar from "@mui/material/Avatar"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
@@ -10,10 +11,60 @@ import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
 import Icon from "components/icon"
 import { usePixContext } from "context/pix/pixContext"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
+import pixService from "services/pixService"
+import type { EnviarPixRequest } from "typesrc/services/pixService/EnviarPixRequest"
+import { formatMoney } from "utils/formatters/money"
 
 export default function PixValor() {
 
-    const { conta } = usePixContext()
+    const navigate = useNavigate()
+    const { contaOrigemSelecionada, contaDestino } = usePixContext()
+
+    const [isValid, setIsValid] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>("")
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [pixRequest, setPixRequest] = useState<EnviarPixRequest>({
+        idContaDestino: contaDestino?.id || "",
+        idContaOrigem: contaOrigemSelecionada?.id || "",
+        idFinalidadePix: 0,
+        idTipoIniciacaoPix: 5,
+        saldoContaOrigem: contaOrigemSelecionada?.saldo || 0,
+        valor: 0,
+    })
+
+    async function handleContinue() {
+        if (!isValid) return
+
+        setErrorMessage("")
+        setIsLoading(true)
+
+        try {
+            await pixService.enviarPix(pixRequest)
+            navigate("/pix/resumo")
+        }
+        catch (error) {
+            setErrorMessage(error instanceof Error ? error.message : "Ocorreu um erro ao processar o Pix.")
+        }
+        finally {
+            setIsLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        console.log(pixRequest)
+
+        if (errorMessage)
+            setErrorMessage("")
+
+        setIsValid(
+            pixRequest.valor > 0 &&
+            pixRequest.valor <= (contaOrigemSelecionada?.saldo || 0) &&
+            pixRequest.idFinalidadePix > 0 &&
+            pixRequest.idTipoIniciacaoPix > 0
+        )
+    }, [pixRequest])
 
     return (
         <>
@@ -33,13 +84,13 @@ export default function PixValor() {
                         </CardMedia>
                         <CardContent className="flex flex-col">
                             <Typography>
-                                Pix para: <span className="font-semibold">{conta?.nomeCliente}</span>
+                                Pix para: <span className="font-semibold">{contaDestino?.nomeCliente}</span>
                             </Typography>
                             <Typography>
-                                CPF/CNPJ: <span className="font-semibold">{conta?.registroNacionalCliente}</span>
+                                CPF/CNPJ: <span className="font-semibold">{contaDestino?.registroNacionalCliente}</span>
                             </Typography>
                             <Typography>
-                                Instituição: <span className="font-semibold">{conta?.nomeInstituicao}</span>
+                                Instituição: <span className="font-semibold">{contaDestino?.nomeInstituicao}</span>
                             </Typography>
                         </CardContent>
                     </Card>
@@ -48,11 +99,50 @@ export default function PixValor() {
                     </Typography>
                     <TextField
                         fullWidth
-                        placeholder="E-mail, CPF ou telefone"
+                        placeholder="Valor em R$"
                         label="Valor"
+                        value={pixRequest.valor > 0 ? pixRequest.valor : ""}
+                        onChange={(e) => {
+                            const val = parseFloat(e.target.value)
+                            setPixRequest({
+                                ...pixRequest,
+                                valor: isNaN(val) ? 0 : val
+                            })
+                        }}
                     />
                     <Typography>
-                        Saldo disponível: <span className="font-semibold">R$ 1.250,00</span>
+                        Saldo disponível: <span className="font-semibold"> {formatMoney(contaOrigemSelecionada?.saldo || 0)} </span>
+                    </Typography>
+                    <Typography variant="h5">
+                        Finalidade
+                    </Typography>
+                    <Box className="flex flex-col gap-4">
+                        <RadioGroup
+                            value={pixRequest.idFinalidadePix}
+                            onChange={(e) => setPixRequest({
+                                ...pixRequest,
+                                idFinalidadePix: Number(e.target.value)
+                            })}
+                        >
+                            <FormControlLabel
+                                value={2}
+                                control={<Radio />}
+                                label="Pix"
+                            />
+                            <FormControlLabel
+                                value={1}
+                                control={<Radio />}
+                                label="Pix Saque"
+                            />
+                            <FormControlLabel
+                                value={4}
+                                control={<Radio />}
+                                label="Pix Troco"
+                            />
+                        </RadioGroup>
+                    </Box>
+                    <Typography variant="h5">
+                        Descrição
                     </Typography>
                     <TextField
                         fullWidth
@@ -61,6 +151,11 @@ export default function PixValor() {
                         rows={4}
                         multiline
                     />
+                    {errorMessage &&
+                        <Alert severity="error">
+                            {errorMessage}
+                        </Alert>
+                    }
                 </Box>
                 <Box className="p-4">
                     <Button
@@ -69,8 +164,14 @@ export default function PixValor() {
                         size="large"
                         fullWidth
                         className="self-baseline"
+                        onClick={handleContinue}
+                        disabled={!isValid || isLoading || !!errorMessage}
                     >
-                        Continuar
+                        {isLoading ?
+                            <CircularProgress />
+                            :
+                            "Continuar"
+                        }
                     </Button>
                 </Box>
             </Box>

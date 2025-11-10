@@ -1,4 +1,4 @@
-package org.uam.sdm.pixapi.domain.dto.transacoes;
+package org.uam.sdm.pixapi.domain.dto.analise;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

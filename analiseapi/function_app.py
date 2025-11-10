@@ -17,7 +17,8 @@ def fazer_analise(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
             json.dumps({
                 "success": False,
-                "message": "Invalid JSON payload. Request body must be a valid JSON object."
+                "message": "Invalid JSON payload. Request body must be a valid JSON object.",
+                "details": None
             }),
             status_code=400,
             mimetype="application/json"
@@ -42,7 +43,7 @@ def fazer_analise(req: func.HttpRequest) -> func.HttpResponse:
         json.dumps({
             "success": True,
             "message": "Analysis completed.",
-            "data": resultado
+            "details": resultado
         }),
         status_code=200,
         mimetype="application/json"

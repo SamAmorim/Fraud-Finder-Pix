@@ -1,8 +1,7 @@
-export interface ObterContaPorChavePixResponse {
+export interface ObterContaListResponse {
     id: string
     nomeCliente: string
     registroNacionalCliente: string
-    ispbInstituicao: string
     nomeInstituicao: string
-    saldo?: number
+    saldo: number
 }

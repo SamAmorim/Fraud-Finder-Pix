@@ -144,12 +144,12 @@ def run_inference(input_df: pd.DataFrame, fraud_threshold: float = 0.5):
     # Retornar resultado consolidado
     # ======================================================
     result = {
-        "is_fraud": bool(pred_binary_label),
-        "fraud_probability": pred_binary_proba_float,
-        "fraud_type": pred_multi_label,
-        "fraud_type_confidence": pred_multi_proba,
-        "fraud_type_probabilities": pred_multi_proba_dict,
-        "timestamp_inferencia": datetime.now().isoformat()
+        "isFraud": bool(pred_binary_label),
+        "fraudProbability": pred_binary_proba_float,
+        "fraudType": pred_multi_label,
+        "fraudTypeConfidence": pred_multi_proba,
+        "fraudTypeProbabilities": pred_multi_proba_dict,
+        "timestampInferencia": datetime.now().isoformat()
     }
 
     return result
@@ -166,33 +166,33 @@ def rodar(transacao: Transacao) -> dict[str, any]:
         return v
 
     data = {
-        "id_transacao": [_val("id_transacao", "t2-teste-real-fraude")],
-        "pagador_conta_aberta_em": [_val("pagador_conta_aberta_em", "2023-05-10T10:00:00")],
-        "pagador_segundos_desde_ultima_tx": [_val("pagador_segundos_desde_ultima_tx", 300)],
-        "pagador_data_nascimento": [_val("pagador_data_nascimento", "1999-07-15T00:00:00")],
-        "valor_transacao": [_val("valor_transacao", 1200000.0)],
-        "tipo_iniciacao_pix_id": [_val("tipo_iniciacao_pix_id", 2)],
-        "recebedor_txs_ultima_1h": [_val("recebedor_txs_ultima_1h", 5)],
-        "recebedor_idade_conta_dias": [_val("recebedor_idade_conta_dias", 10)],
-        "pagador_tipo_conta_id": [_val("pagador_tipo_conta_id", 2)],
-        "pagador_valor_ultimas_24h": [_val("pagador_valor_ultimas_24h", 19500.0)],
-        "pagador_interacoes_com_recebedor": [_val("pagador_interacoes_com_recebedor", 1)],
-        "finalidade_pix_id": [_val("finalidade_pix_id", 3)],
-        "recebedor_natureza_id": [_val("recebedor_natureza_id", 1)],
-        "recebedor_valor_ultima_1h": [_val("recebedor_valor_ultima_1h", 19500.0)],
-        "recebedor_saldo": [_val("recebedor_saldo", 19500.0)],
-        "recebedor_tipo_conta_id": [_val("recebedor_tipo_conta_id", 2)],
-        "pagador_idade_conta_dias": [_val("pagador_idade_conta_dias", 90)],
-        "primeira_interacao": [_val("primeira_interacao", 1)],
-        "valor_vs_saldo_pagador": [_val("valor_vs_saldo_pagador", 0.9)],
-        "recebedor_data_nascimento": [_val("recebedor_data_nascimento", "2001-01-01T00:00:00")],
-        "pagador_saldo": [_val("pagador_saldo", 20000.0)],
-        "pagador_txs_ultimas_24h": [_val("pagador_txs_ultimas_24h", 1)],
-        "recebedor_num_pagadores_unicos_24h": [_val("recebedor_num_pagadores_unicos_24h", 1)],
-        "recebedor_conta_aberta_em": [_val("recebedor_conta_aberta_em", "2025-11-01T00:00:00")],
-        "pagador_natureza_id": [_val("pagador_natureza_id", 1)],
-        "data_transacao": [_val("data_transacao", "2025-11-08T23:30:00")],
-        "valor_vs_media_pagador_30d": [_val("valor_vs_media_pagador_30d", 25.8)],
+        "id_transacao": [_val("idTransacao", "t2-teste-real-fraude")],
+        "pagador_conta_aberta_em": [_val("pagadorContaAbertaEm", "2023-05-10T10:00:00")],
+        "pagador_segundos_desde_ultima_tx": [_val("pagadorSegundosDesdeUltimaTx", 300)],
+        "pagador_data_nascimento": [_val("pagadorDataNascimento", "1999-07-15T00:00:00")],
+        "valor_transacao": [_val("valorTransacao", 1200000.0)],
+        "tipo_iniciacao_pix_id": [_val("tipoIniciacaoPixId", 2)],
+        "recebedor_txs_ultima_1h": [_val("recebedorTxsUltima1h", 5)],
+        "recebedor_idade_conta_dias": [_val("recebedorIdadeContaDias", 10)],
+        "pagador_tipo_conta_id": [_val("pagadorTipoContaId", 2)],
+        "pagador_valor_ultimas_24h": [_val("pagadorValorUltimas24h", 19500.0)],
+        "pagador_interacoes_com_recebedor": [_val("pagadorInteracoesComRecebedor", 1)],
+        "finalidade_pix_id": [_val("finalidadePixId", 3)],
+        "recebedor_natureza_id": [_val("recebedorNaturezaId", 1)],
+        "recebedor_valor_ultima_1h": [_val("recebedorValorUltima1h", 19500.0)],
+        "recebedor_saldo": [_val("recebedorSaldo", 19500.0)],
+        "recebedor_tipo_conta_id": [_val("recebedorTipoContaId", 2)],
+        "pagador_idade_conta_dias": [_val("pagadorIdadeContaDias", 90)],
+        "primeira_interacao": [_val("primeiraInteracao", 1)],
+        "valor_vs_saldo_pagador": [_val("valorVsSaldoPagador", 0.9)],
+        "recebedor_data_nascimento": [_val("recebedorDataNascimento", "2001-01-01T00:00:00")],
+        "pagador_saldo": [_val("pagadorSaldo", 20000.0)],
+        "pagador_txs_ultimas_24h": [_val("pagadorTxsUltimas24h", 1)],
+        "recebedor_num_pagadores_unicos_24h": [_val("recebedorNumPagadoresUnicos24h", 1)],
+        "recebedor_conta_aberta_em": [_val("recebedorContaAbertaEm", "2025-11-01T00:00:00")],
+        "pagador_natureza_id": [_val("pagadorNaturezaId", 1)],
+        "data_transacao": [_val("dataTransacao", "2025-11-08T23:30:00")],
+        "valor_vs_media_pagador_30d": [_val("valorVsMediaPagador30d", 25.8)],
     }
     df_input = pd.DataFrame(data)
     resultado = run_inference(df_input)

@@ -3,8 +3,8 @@ import { createBrowserRouter } from "react-router"
 import type { RouteHandle } from "typesrc/pages"
 import Inicio from "."
 import Pix from "./pix"
+import PixResumo from "./pix/resumo"
 import PixValor from "./pix/valor"
-import PixContextProvider from "components/providers/pix/PixProvider"
 
 const routes = createBrowserRouter([
     {
@@ -20,7 +20,6 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/pix",
-                Component: PixContextProvider,
                 children: [
                     {
                         index: true,
@@ -36,6 +35,13 @@ const routes = createBrowserRouter([
                             title: "Pix"
                         } as RouteHandle,
                         path: "/pix/valor",
+                    },
+                    {
+                        Component: PixResumo,
+                        handle: {
+                            title: "Pix"
+                        } as RouteHandle,
+                        path: "/pix/resumo",
                     },
                 ]
             },

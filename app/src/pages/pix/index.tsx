@@ -13,7 +13,7 @@ import { validateChavePix } from "utils/validations/index"
 export default function Pix() {
 
     const navigate = useNavigate()
-    const { setConta } = usePixContext()
+    const { setContaDestino } = usePixContext()
 
     const [chavePix, setChavePix] = useState<string>("")
     const [isValid, setIsValid] = useState<boolean>(false)
@@ -30,7 +30,7 @@ export default function Pix() {
             const response = await pixService.obterContaPorChavePix(chavePix)
             console.log("Resposta da conta Pix:", response)
             if (response && response.id) {
-                setConta(response)
+                setContaDestino(response)
                 navigate("/pix/valor")
             }
             else {

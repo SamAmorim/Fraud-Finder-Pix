@@ -1,26 +1,32 @@
 import { PixContext } from "context/pix/pixContext"
 import { useState } from "react"
-import { Outlet } from "react-router"
 import type { IPixContext } from "typesrc/context/pix/pixContext"
 
-export default function PixContextProvider() {
+export default function PixContextProvider({
+    children
+}: {
+    children: React.ReactNode
+}) {
 
-    const [pixConta, setPixConta] = useState<IPixContext["conta"]>({
+    const [contaDestino, setContaDestino] = useState<IPixContext["contaDestino"]>({
         id: "teste",
         nomeCliente: "João da Silva",
         registroNacionalCliente: "123.456.789-00",
         nomeInstituicao: "Banco Exemplo",
         ispbInstituicao: "12345678",
     })
+    const [contaOrigemSelecionada, setContaOrigemSelecionada] = useState<IPixContext["contaOrigemSelecionada"]>(undefined)
 
     return (
         <PixContext.Provider
             value={{
-                conta: pixConta,
-                setConta: setPixConta,
+                contaDestino,
+                setContaDestino,
+                contaOrigemSelecionada,
+                setContaOrigemSelecionada,
             }}
         >
-            <Outlet />
+            {children}
         </PixContext.Provider>
     )
 }
