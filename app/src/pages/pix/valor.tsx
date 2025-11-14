@@ -20,7 +20,7 @@ import { formatMoney } from "utils/formatters/money"
 export default function PixValor() {
 
     const navigate = useNavigate()
-    const { contaOrigemSelecionada, contaDestino } = usePixContext()
+    const { contaOrigemSelecionada, contaDestino, setResumo } = usePixContext()
 
     const [isValid, setIsValid] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>("")
@@ -41,7 +41,8 @@ export default function PixValor() {
         setIsLoading(true)
 
         try {
-            await pixService.enviarPix(pixRequest)
+            const data = await pixService.enviarPix(pixRequest)
+            setResumo(data)
             navigate("/pix/resumo")
         }
         catch (error) {
@@ -53,8 +54,6 @@ export default function PixValor() {
     }
 
     useEffect(() => {
-        console.log(pixRequest)
-
         if (errorMessage)
             setErrorMessage("")
 

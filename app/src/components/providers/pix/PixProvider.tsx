@@ -16,17 +16,18 @@ export default function PixContextProvider({
         ispbInstituicao: "12345678",
     })
     const [contaOrigemSelecionada, setContaOrigemSelecionada] = useState<IPixContext["contaOrigemSelecionada"]>(undefined)
-    const [resumo, setResumo] = useState<IPixContext["resumo"]>({
-        isFraud: true,
-        fraudType: "triangulacao_conta_laranja",
-        fraudProbability: 0.4,
-        fraudTypeConfidence: 0.7,
-        fraudTypeProbabilities: {
-            consolidacaoFundos: 0.4,
-            engenhariaSocial: 0.2,
-            triangulacaoContaLaranja: 0.05,
-            valorAtipico: 0.006
-        }
+    const [resumo, setResumo] = useState<IPixContext["resumo"]>(undefined
+        // {
+        // isFraud: true,
+        // fraudType: "triangulacao_conta_laranja",
+        // fraudProbability: 0.4,
+        // fraudTypeConfidence: 0.7,
+        // fraudTypeProbabilities: {
+        //     consolidacaoFundos: 0.4,
+        //     engenhariaSocial: 0.2,
+        //     triangulacaoContaLaranja: 0.05,
+        //     valorAtipico: 0.006
+        // }
         // isFraud: false,
         // id: "hd8237hd3-d324-d234-f43f34t5",
         // data: new Date(),
@@ -39,7 +40,8 @@ export default function PixContextProvider({
         // registroNacionalClienteContaDestino: "32********12",
         // valor: 3265.22,
         // mensagem: "Pix enviado"
-    })
+        // }
+    )
 
     return (
         <PixContext.Provider

@@ -1,9 +1,9 @@
-import { Alert, Button } from "@mui/material"
+import { Button } from "@mui/material"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
 import { usePixContext } from "context/pix/pixContext"
-import { useNavigate } from "react-router"
+import { Navigate, useNavigate } from "react-router"
 import PixResumoErro from "./resumo/erro"
 import PixResumoSucesso from "./resumo/sucesso"
 
@@ -15,6 +15,9 @@ export default function PixResumo() {
     function handleContinue() {
         navigate("/")
     }
+
+    if (!resumo)
+        return <Navigate to="/" />
 
     return (
         <>

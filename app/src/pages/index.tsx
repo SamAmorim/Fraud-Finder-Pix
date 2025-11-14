@@ -24,6 +24,12 @@ export default function Inicio() {
                     >
                         Bem-vindo à Simulação Pix!
                     </Typography>
+                    <Box className="flex justify-center">
+                        <img
+                            src="/phone.png"
+                            width={300}
+                        />
+                    </Box>
                     <Button
                         variant="contained"
                         color="primary"
