@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia"
 import Link from "@mui/material/Link"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
+import CurrencyField from "components/currency-field"
 import HeaderDetail from "components/header-detail"
 import Icon from "components/icon"
 import { usePixContext } from "context/pix/pixContext"
@@ -96,16 +97,16 @@ export default function PixValor() {
                     <Typography variant="h4">
                         Escolha o valor
                     </Typography>
-                    <TextField
+                    <CurrencyField
                         fullWidth
                         placeholder="Valor em R$"
                         label="Valor"
-                        value={pixRequest.valor > 0 ? pixRequest.valor : ""}
-                        onChange={(e) => {
-                            const val = parseFloat(e.target.value)
+                        value={pixRequest.valor}
+                        onChange={(value) => {
+                            console.log(value)
                             setPixRequest({
                                 ...pixRequest,
-                                valor: isNaN(val) ? 0 : val
+                                valor: value
                             })
                         }}
                     />
