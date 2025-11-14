@@ -1,8 +1,8 @@
-import { Alert, Box, Typography } from "@mui/material";
-import Icon from "components/icon";
-import type { PixResumoErroProps } from "typesrc/pages/pix/resumo/erro";
-import { getFraudTypeName } from "utils/formatters/fraudType";
-import { formatToPercentageString } from "utils/formatters/numbers";
+import { Alert, Box, Typography } from "@mui/material"
+import Icon from "components/icon"
+import type { PixResumoErroProps } from "typesrc/pages/pix/resumo/erro"
+import { getFraudTypeName } from "utils/formatters/fraudType"
+import { formatToPercentageString } from "utils/formatters/numbers"
 
 export default function PixResumoErro({
     resumo

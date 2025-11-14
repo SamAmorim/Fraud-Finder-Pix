@@ -1,6 +1,6 @@
-import { Alert, Box, Typography } from "@mui/material";
-import type { PixResumoSucessoProps } from "typesrc/pages/pix/resumo/sucesso";
-import { formatMoney } from "utils/formatters/money";
+import { Alert, Box, Typography } from "@mui/material"
+import type { PixResumoSucessoProps } from "typesrc/pages/pix/resumo/sucesso"
+import { formatMoney } from "utils/formatters/money"
 
 export default function PixResumoSucesso({
     resumo

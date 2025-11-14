@@ -1,42 +1,42 @@
-import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CircularProgress from "@mui/material/CircularProgress";
-import Radio from "@mui/material/Radio";
-import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
-import type { ObterContaListResponse } from "typesrc/services/pixService/ObterContaListResponse";
-import { usePixContext } from "../../context/pix/pixContext";
-import pixService from "../../services/pixService";
-import HeaderDetail from "components/header-detail";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router";
+import Alert from "@mui/material/Alert"
+import Box from "@mui/material/Box"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import CircularProgress from "@mui/material/CircularProgress"
+import Radio from "@mui/material/Radio"
+import Typography from "@mui/material/Typography"
+import { useEffect, useState } from "react"
+import type { ObterContaListResponse } from "typesrc/services/pixService/ObterContaListResponse"
+import { usePixContext } from "../../context/pix/pixContext"
+import pixService from "../../services/pixService"
+import HeaderDetail from "components/header-detail"
+import { Button } from "@mui/material"
+import { useNavigate } from "react-router"
 
 export default function PixConta() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const [contas, setContas] = useState<ObterContaListResponse[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    const { contaOrigemSelecionada, setContaOrigemSelecionada } = usePixContext();
+    const [contas, setContas] = useState<ObterContaListResponse[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const { contaOrigemSelecionada, setContaOrigemSelecionada } = usePixContext()
 
     useEffect(() => {
-        carregarContas();
-    }, []);
+        carregarContas()
+    }, [])
 
     async function carregarContas() {
         try {
-            const data = await pixService.listarContas();
-            setContas([]);
-            setErrorMessage(null);
+            const data = await pixService.listarContas()
+            setContas([])
+            setErrorMessage(null)
         } catch (err) {
-            setErrorMessage('Erro ao carregar lista de contas.');
+            setErrorMessage('Erro ao carregar lista de contas.')
         } finally {
-            setIsLoading(false);
+            setIsLoading(false)
         }
-    };
+    }
 
     function handleSelecionarConta(conta: ObterContaListResponse) {
         setContaOrigemSelecionada({
@@ -44,12 +44,12 @@ export default function PixConta() {
             nomeCliente: conta.nomeCliente,
             registroNacionalCliente: conta.registroNacionalCliente,
             saldo: conta.saldo,
-        });
-    };
+        })
+    }
 
     function handleContinue() {
-        if (!contaOrigemSelecionada) return;
-        navigate("/pix");
+        if (!contaOrigemSelecionada) return
+        navigate("/pix")
     }
 
     return (

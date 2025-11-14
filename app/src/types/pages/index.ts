@@ -1,4 +1,4 @@
-import type { UIMatch } from "react-router";
+import type { UIMatch } from "react-router"
 
 export interface RouteLoaderData {
     pageTitle: string

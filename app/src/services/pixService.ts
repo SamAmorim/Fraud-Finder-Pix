@@ -1,6 +1,7 @@
-import type { AxiosError } from "axios"; // Importar AxiosError para melhor tipagem
+import type { AxiosError } from "axios"
 import type { PageResponse } from "typesrc/services/PageResponse"
 import type { EnviarPixRequest } from "typesrc/services/pixService/EnviarPixRequest"
+import type { EnviarPixResponse } from "typesrc/services/pixService/EnviarPixResponse"
 import type { ObterContaListResponse } from "typesrc/services/pixService/ObterContaListResponse"
 import type { ObterContaPorChavePixResponse } from "typesrc/services/pixService/ObterContaPorChavePixResponse"
 import API from "./api"
@@ -12,21 +13,22 @@ function isAxiosErrorWithResponse(error: unknown): error is AxiosError & { respo
         error !== null &&
         (error as any).isAxiosError === true &&
         'response' in error
-    );
+    )
 }
 
-async function enviarPix(request: EnviarPixRequest): Promise<void> {
+async function enviarPix(request: EnviarPixRequest): Promise<EnviarPixResponse> {
     try {
-        await API.pixApi.post('/transacoes/pix', request)
+        const { data } = await API.pixApi.post<EnviarPixResponse>('/transacoes/pix', request)
+        return data
     }
     catch (error: unknown) {
         console.error("Erro ao enviar Pix:", error)
 
         if (isAxiosErrorWithResponse(error) && error.response.data?.mensagem) {
-            throw new Error(error.response.data.mensagem);
+            throw new Error(error.response.data.mensagem)
         }
 
-        throw new Error('Erro ao enviar Pix. Por favor, tente novamente.');
+        throw new Error('Erro ao enviar Pix. Por favor, tente novamente.')
     }
 }
 
@@ -42,11 +44,11 @@ async function obterContaPorChavePix(chavePix: string): Promise<ObterContaPorCha
             }
 
             if (error.response.data?.mensagem) {
-                throw new Error(error.response.data.mensagem);
+                throw new Error(error.response.data.mensagem)
             }
         }
 
-        throw new Error('Erro ao obter conta por chave Pix.');
+        throw new Error('Erro ao obter conta por chave Pix.')
     }
 }
 
@@ -59,10 +61,10 @@ async function listarContas(): Promise<PageResponse<ObterContaListResponse>> {
         console.error("Erro ao listar contas:", error)
 
         if (isAxiosErrorWithResponse(error) && error.response.data?.mensagem) {
-            throw new Error(error.response.data.mensagem);
+            throw new Error(error.response.data.mensagem)
         }
 
-        throw new Error('Erro ao obter lista de contas.');
+        throw new Error('Erro ao obter lista de contas.')
     }
 }
 

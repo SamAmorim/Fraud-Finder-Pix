@@ -1,16 +1,15 @@
-import { Button } from "@mui/material";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
-import Typography from "@mui/material/Typography";
-import HeaderDetail from "components/header-detail";
-import { useNavigate } from "react-router";
+import { Button } from "@mui/material"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import HeaderDetail from "components/header-detail"
+import { useNavigate } from "react-router"
 
 export default function Inicio() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     function handleContinue() {
-        navigate("/pix");
+        navigate("/pix")
     }
 
     return (
