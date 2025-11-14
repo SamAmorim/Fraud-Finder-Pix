@@ -10,7 +10,7 @@ import { useNavigate } from "react-router"
 import pixService from "services/pixService"
 import { validateChavePix } from "utils/validations/index"
 
-export default function Pix() {
+export default function PixChave() {
 
     const navigate = useNavigate()
     const { setContaDestino } = usePixContext()

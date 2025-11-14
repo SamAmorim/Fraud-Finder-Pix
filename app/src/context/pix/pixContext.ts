@@ -5,7 +5,9 @@ export const PixContext = createContext<IPixContext>({
     contaDestino: undefined,
     setContaDestino: () => { },
     contaOrigemSelecionada: undefined,
-    setContaOrigemSelecionada: () => {},
+    setContaOrigemSelecionada: () => { },
+    resumo: undefined,
+    setResumo: () => { },
 })
 
 export const usePixContext = () => useContext(PixContext)

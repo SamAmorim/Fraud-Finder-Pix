@@ -94,7 +94,7 @@ export default function PixValor() {
                             </Typography>
                         </CardContent>
                     </Card>
-                    <Typography variant="h1">
+                    <Typography variant="h4">
                         Escolha o valor
                     </Typography>
                     <TextField

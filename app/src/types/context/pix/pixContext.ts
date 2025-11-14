@@ -1,3 +1,5 @@
+import type { EnviarPixResponse } from "typesrc/services/pixService/EnviarPixResponse"
+
 export interface IPixConta {
     id: string
     nomeCliente: string
@@ -12,4 +14,6 @@ export interface IPixContext {
     setContaDestino: (conta?: IPixConta) => void
     contaOrigemSelecionada?: IPixConta
     setContaOrigemSelecionada: (conta?: IPixConta) => void
+    resumo?: EnviarPixResponse
+    setResumo: (resumo?: EnviarPixResponse) => void
 }

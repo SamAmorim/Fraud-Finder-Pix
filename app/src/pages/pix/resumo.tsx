@@ -1,32 +1,20 @@
-import { Alert, CircularProgress } from "@mui/material"
+import { Alert, Button } from "@mui/material"
 import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 import HeaderDetail from "components/header-detail"
 import { usePixContext } from "context/pix/pixContext"
-import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
-import pixService from "services/pixService"
-import { validateChavePix } from "utils/validations/index"
+import PixResumoErro from "./resumo/erro"
+import PixResumoSucesso from "./resumo/sucesso"
 
 export default function PixResumo() {
 
     const navigate = useNavigate()
-    const { setContaDestino } = usePixContext()
+    const { resumo } = usePixContext()
 
-    const [chavePix, setChavePix] = useState<string>("")
-    const [isValid, setIsValid] = useState<boolean>(false)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [errorMessage, setErrorMessage] = useState<string>("")
-
-    useEffect(() => {
-        if (errorMessage)
-            setErrorMessage("")
-
-        const isValidChave = validateChavePix(chavePix)
-        setIsValid(isValidChave)
-    }, [chavePix])
+    function handleContinue() {
+        navigate("/")
+    }
 
     return (
         <>
@@ -40,11 +28,23 @@ export default function PixResumo() {
                     >
                         Resumo da transferência
                     </Typography>
-                    {errorMessage &&
-                        <Alert severity="error">
-                            {errorMessage}
-                        </Alert>
+                    {resumo?.isFraud ?
+                        <PixResumoErro resumo={resumo} />
+                        :
+                        <PixResumoSucesso resumo={resumo!} />
                     }
+                </Box>
+                <Box className="p-4">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        fullWidth
+                        className="self-baseline"
+                        onClick={handleContinue}
+                    >
+                        Voltar ao Início
+                    </Button>
                 </Box>
             </Box>
         </>

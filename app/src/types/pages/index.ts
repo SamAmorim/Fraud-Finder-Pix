@@ -6,6 +6,7 @@ export interface RouteLoaderData {
 
 export interface RouteHandle {
     title: string | ((data: RouteLoaderData) => string)
+    showBackButton?: boolean
 }
 
 export interface RouteMatch extends UIMatch {

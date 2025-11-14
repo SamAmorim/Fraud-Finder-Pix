@@ -1,10 +1,11 @@
 import DefaultLayout from "components/layout/default"
 import { createBrowserRouter } from "react-router"
 import type { RouteHandle } from "typesrc/pages"
-import Inicio from "."
-import Pix from "./pix"
+import PixConta from "./pix/conta"
+import PixChave from "./pix/chave"
 import PixResumo from "./pix/resumo"
 import PixValor from "./pix/valor"
+import Inicio from "."
 
 const routes = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ const routes = createBrowserRouter([
                 index: true,
                 Component: Inicio,
                 handle: {
-                    title: "Página Inicial"
+                    title: "Simulação Pix",
+                    showBackButton: false,
                 } as RouteHandle,
                 path: "/",
             },
@@ -23,11 +25,18 @@ const routes = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        Component: Pix,
+                        Component: PixConta,
                         handle: {
                             title: "Pix"
                         } as RouteHandle,
                         path: "/pix",
+                    },
+                    {
+                        Component: PixChave,
+                        handle: {
+                            title: "Pix"
+                        } as RouteHandle,
+                        path: "/pix/chave",
                     },
                     {
                         Component: PixValor,
