@@ -12,6 +12,7 @@ import pixService from "../../services/pixService"
 import HeaderDetail from "components/header-detail"
 import { Button } from "@mui/material"
 import { useNavigate } from "react-router"
+import { formatMoney } from "utils/formatters/money"
 
 export default function PixConta() {
 
@@ -29,7 +30,7 @@ export default function PixConta() {
     async function carregarContas() {
         try {
             const data = await pixService.listarContas()
-            setContas([])
+            setContas(data.content)
             setErrorMessage(null)
         } catch (err) {
             setErrorMessage('Erro ao carregar lista de contas.')
@@ -90,7 +91,6 @@ export default function PixConta() {
                                             value={conta.id}
                                             color="primary"
                                             sx={{ mr: 2 }}
-                                            inputProps={{ "aria-label": `Selecionar conta ${conta.nomeCliente}` }}
                                         />
                                         <Box>
                                             <Typography variant="subtitle1" fontWeight="bold">
@@ -101,6 +101,9 @@ export default function PixConta() {
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
                                                 Instituição: {conta.nomeInstituicao}
+                                            </Typography>
+                                            <Typography variant="body2" color="text.secondary">
+                                                Saldo: {formatMoney(conta.saldo)}
                                             </Typography>
                                         </Box>
                                     </CardContent>
