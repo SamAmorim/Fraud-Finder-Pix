@@ -7,8 +7,8 @@ from application.models.transacao import Transacao
 
 app = func.FunctionApp()
 
-@app.route(route="fazer_analise", methods=["POST"])
-def fazer_analise(req: func.HttpRequest) -> func.HttpResponse:
+@app.route(route="analisar", methods=["POST"])
+def analisar(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     try:

@@ -8,37 +8,23 @@ import json
 import numpy as np
 import pandas as pd
 import mlflow
+from pathlib import Path
 from datetime import datetime
 from application.models.transacao import Transacao
 
 # ==========================================================
 # 1. Configurações de caminhos e artefatos
 # ==========================================================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).resolve().parents[1]
+ARTIFACT_DIR = BASE_DIR / "model_artifacts"
+# Compatibilidade com código que espera string para ARTIFACT_DIR
+ARTIFACT_DIR = str(ARTIFACT_DIR)
+# Garante que o diretório exista em tempo de execução
+os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
-BINARY_MODEL_PATH = os.path.join(
-    BASE_DIR,
-    'application', 
-    'services', 
-    'model_artifacts', 
-    'fraud_binary_pipeline'
-)
-
-MULTICLASS_MODEL_PATH = os.path.join(
-    BASE_DIR,
-    'application', 
-    'services', 
-    'model_artifacts', 
-    'fraud_type_pipeline'
-)
-
-LABEL_MAP_PATH = os.path.join(
-    BASE_DIR,
-    'application', 
-    'services', 
-    'model_artifacts', 
-    'fraud_type_label_map.json'
-)
+BINARY_MODEL_PATH = os.path.join(ARTIFACT_DIR, "fraud_binary_pipeline")
+MULTICLASS_MODEL_PATH = os.path.join(ARTIFACT_DIR, "fraud_type_pipeline")
+LABEL_MAP_PATH = os.path.join(ARTIFACT_DIR, "fraud_type_label_map.json")
 
 # ==========================================================
 # 2. Carregamento dos modelos e metadados
