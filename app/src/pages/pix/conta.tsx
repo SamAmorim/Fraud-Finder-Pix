@@ -50,7 +50,7 @@ export default function PixConta() {
 
     function handleContinue() {
         if (!contaOrigemSelecionada) return
-        navigate("/pix")
+        navigate("/pix/chave")
     }
 
     return (
