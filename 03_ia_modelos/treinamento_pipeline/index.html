@@ -10,13 +10,13 @@
         <meta name="author" content="Samuel Amorim, Leonardo Rondam, Nicholas Campanelli, Rodrigo Genaro">
       
       
-        <link rel="canonical" href="https://SamAmorim.github.io/Fraud-Finder-Pix/01_arquitetura/software/">
+        <link rel="canonical" href="https://SamAmorim.github.io/Fraud-Finder-Pix/03_ia_modelos/treinamento_pipeline/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../arquitetura_cascata/">
       
       
-        <link rel="next" href="../cloud/">
+        <link rel="next" href="../../04_avaliacao/metrica/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Visao Geral do Software - IARA - Inteligencia Antifraude e Risco Automatizada</title>
+        <title>Treinamento e Pipeline - IARA - Inteligencia Antifraude e Risco Automatizada</title>
       
     
     
@@ -79,11 +79,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#arquitetura-de-software" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Visao Geral do Software
+              Treinamento e Pipeline
             
           </span>
         </div>
@@ -244,13 +239,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../01_arquitetura/software/" class="md-tabs__link">
           
   
   
@@ -286,11 +279,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../03_ia_modelos/arquitetura_cascata/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../arquitetura_cascata/" class="md-tabs__link">
           
   
   
@@ -400,29 +395,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -440,7 +432,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -455,35 +447,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visao Geral do Software
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../01_arquitetura/software/" class="md-nav__link">
         
   
   
@@ -499,74 +466,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#arquitetura-de-software" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arquitetura de Software
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arquitetura de Software">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-camada-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Camada Frontend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-camada-de-api-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Camada de API (Backend)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fluxo-da-deteccao-de-fraude-cascata" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fluxo da Deteccao de Fraude (Cascata)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -579,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/" class="md-nav__link">
+      <a href="../../01_arquitetura/cloud/" class="md-nav__link">
         
   
   
@@ -726,26 +625,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -763,7 +665,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -781,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03_ia_modelos/arquitetura_cascata/" class="md-nav__link">
+      <a href="../arquitetura_cascata/" class="md-nav__link">
         
   
   
@@ -806,10 +708,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../03_ia_modelos/treinamento_pipeline/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -825,6 +734,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -972,85 +882,9 @@
   
 
 
-  <h1>Visao Geral do Software</h1>
+  <h1>Treinamento e Pipeline</h1>
 
-<h2 id="arquitetura-de-software">Arquitetura de Software<a class="headerlink" href="#arquitetura-de-software" title="Permanent link">&para;</a></h2>
-<p>A arquitetura logica e baseada em microsservicos e segue um fluxo de chamadas sincrona HTTP/REST, permitindo a separacao de responsabilidades entre as camadas de transacao e de analise de IA.</p>
-<hr />
-<p><img alt="alt text" src="../Arquitetura_de_software.svg" /></p>
-<h3 id="1-camada-frontend">1. Camada Frontend<a class="headerlink" href="#1-camada-frontend" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Funcao</th>
-<th style="text-align: left;">Tecnologias</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>App (Frontend)</strong></td>
-<td style="text-align: left;">Aplicacao frontend que proporciona um ambiente virtual que auxilia a <strong>simulacao de transacoes</strong>.</td>
-<td style="text-align: left;">React (Vite).</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-camada-de-api-backend">2. Camada de API (Backend)<a class="headerlink" href="#2-camada-de-api-backend" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Funcao</th>
-<th style="text-align: left;">Fluxo de Dados</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>PixApi</strong></td>
-<td style="text-align: left;">Servico <strong>RESTful</strong> para simular transacoes PIX. Ele gerencia o fluxo de transacoes e contas, persistindo dados no Banco de Dados.</td>
-<td style="text-align: left;">Recebe requisicoes HTTP/REST e persiste via <strong>CRUD (JPA/MySQL)</strong>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>AnaliseApi</strong></td>
-<td style="text-align: left;">Servico focado em <strong>analisar dados de transacoes PIX</strong> e detectar transacoes fraudulentas. Ele e o motor antifraude que executa a logica de IA.</td>
-<td style="text-align: left;">E invocado pela <code>PixApi</code> (cliente HTTP) para a predicao.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="fluxo-da-deteccao-de-fraude-cascata">Fluxo da Deteccao de Fraude (Cascata)<a class="headerlink" href="#fluxo-da-deteccao-de-fraude-cascata" title="Permanent link">&para;</a></h2>
-<p>O fluxo se inicia quando a <strong>PixApi</strong> recebe uma requisicao de transacao e, antes de finaliza-la no banco, invoca a <strong>AnaliseApi</strong> para a predicao em tempo real.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Passo</th>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Acao Principal</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">1. Transacao</td>
-<td style="text-align: left;"><code>App</code> <span class="arithmatex">\(\rightarrow\)</span> <code>PixApi</code></td>
-<td style="text-align: left;">Envio dos dados da transacao (via HTTP/REST).</td>
-</tr>
-<tr>
-<td style="text-align: left;">2. Analise</td>
-<td style="text-align: left;"><code>PixApi</code> <span class="arithmatex">\(\rightarrow\)</span> <code>AnaliseApi</code></td>
-<td style="text-align: left;">Invocacao do servico de analise (cliente HTTP/REST).</td>
-</tr>
-<tr>
-<td style="text-align: left;">3. Predicao</td>
-<td style="text-align: left;"><code>AnaliseApi</code> (Azure Function)</td>
-<td style="text-align: left;">Carrega modelos de <strong>Keras/TensorFlow</strong> e executa o <strong>pipeline de inferencia em cascata</strong>.</td>
-</tr>
-<tr>
-<td style="text-align: left;">4. Persistencia</td>
-<td style="text-align: left;"><code>PixApi</code> <span class="arithmatex">\(\rightarrow\)</span> Banco de Dados</td>
-<td style="text-align: left;">Salva a transacao e o resultado da analise (fraude ou legitima).</td>
-</tr>
-</tbody>
-</table>
+
 
 
 

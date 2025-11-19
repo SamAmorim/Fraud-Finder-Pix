@@ -10,13 +10,13 @@
         <meta name="author" content="Samuel Amorim, Leonardo Rondam, Nicholas Campanelli, Rodrigo Genaro">
       
       
-        <link rel="canonical" href="https://SamAmorim.github.io/Fraud-Finder-Pix/01_arquitetura/software/">
+        <link rel="canonical" href="https://SamAmorim.github.io/Fraud-Finder-Pix/02_modelagem_estatistica/output/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../estatistica/">
       
       
-        <link rel="next" href="../cloud/">
+        <link rel="next" href="../../03_ia_modelos/arquitetura_cascata/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Visao Geral do Software - IARA - Inteligencia Antifraude e Risco Automatizada</title>
+        <title>Estrutura de Saida - IARA - Inteligencia Antifraude e Risco Automatizada</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arquitetura-de-software" class="md-skip">
+        <a href="#estrutura-de-saida-modelo-de-dados" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Visao Geral do Software
+              Estrutura de Saida
             
           </span>
         </div>
@@ -244,13 +244,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../01_arquitetura/software/" class="md-tabs__link">
           
   
   
@@ -266,11 +264,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../02_modelagem_estatistica/estatistica/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../estatistica/" class="md-tabs__link">
           
   
   
@@ -400,29 +400,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -440,7 +437,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -455,35 +452,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Visao Geral do Software
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../01_arquitetura/software/" class="md-nav__link">
         
   
   
@@ -499,74 +471,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#arquitetura-de-software" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Arquitetura de Software
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Arquitetura de Software">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-camada-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Camada Frontend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-camada-de-api-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Camada de API (Backend)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fluxo-da-deteccao-de-fraude-cascata" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fluxo da Deteccao de Fraude (Cascata)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -579,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/" class="md-nav__link">
+      <a href="../../01_arquitetura/cloud/" class="md-nav__link">
         
   
   
@@ -611,26 +515,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -648,7 +555,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -666,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../02_modelagem_estatistica/estatistica/" class="md-nav__link">
+      <a href="../estatistica/" class="md-nav__link">
         
   
   
@@ -691,10 +598,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../02_modelagem_estatistica/output/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estrutura de Saida
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -710,6 +644,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-transacoes_dbcopperclientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. transacoes_db.copper.clientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-transacoes_dbcoppercontas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. transacoes_db.copper.contas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-transacoes_dbcopperchaves_pix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. transacoes_db.copper.chaves_pix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-transacoes_dbcoppertransacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. transacoes_db.copper.transacoes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -972,82 +970,209 @@
   
 
 
-  <h1>Visao Geral do Software</h1>
-
-<h2 id="arquitetura-de-software">Arquitetura de Software<a class="headerlink" href="#arquitetura-de-software" title="Permanent link">&para;</a></h2>
-<p>A arquitetura logica e baseada em microsservicos e segue um fluxo de chamadas sincrona HTTP/REST, permitindo a separacao de responsabilidades entre as camadas de transacao e de analise de IA.</p>
+<h1 id="estrutura-de-saida-modelo-de-dados">Estrutura de Saída (Modelo de Dados)<a class="headerlink" href="#estrutura-de-saida-modelo-de-dados" title="Permanent link">&para;</a></h1>
+<p>Esta seção detalha o modelo relacional simples que materializa os "agentes" e "eventos" gerados pelo <em>pipeline</em> sintético. O modelo é composto por quatro tabelas <strong>Delta</strong> principais, todas armazenadas no <em>database</em> <code>transacoes_db.copper</code>[cite: 561, 562].</p>
 <hr />
-<p><img alt="alt text" src="../Arquitetura_de_software.svg" /></p>
-<h3 id="1-camada-frontend">1. Camada Frontend<a class="headerlink" href="#1-camada-frontend" title="Permanent link">&para;</a></h3>
+<h2 id="1-transacoes_dbcopperclientes">1. <code>transacoes_db.copper.clientes</code><a class="headerlink" href="#1-transacoes_dbcopperclientes" title="Permanent link">&para;</a></h2>
+<p>Esta é a tabela raiz que armazena a população de "agentes" Pessoa Física (PF) e Pessoa Jurídica (PJ)[cite: 563, 564].</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Funcao</th>
-<th style="text-align: left;">Tecnologias</th>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Funções na Análise</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>App (Frontend)</strong></td>
-<td style="text-align: left;">Aplicacao frontend que proporciona um ambiente virtual que auxilia a <strong>simulacao de transacoes</strong>.</td>
-<td style="text-align: left;">React (Vite).</td>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave primária única do cliente.</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nome</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Nome completo (PF) ou Razão Social (PJ).</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>id_natureza</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">1 para PF, 2 para PJ[cite: 574].</td>
+<td style="text-align: left;">Categorização do agente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>registro_nacional</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">CPF ou CNPJ formatado[cite: 575].</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nascido_em</code></td>
+<td style="text-align: left;"><code>date</code></td>
+<td style="text-align: left;">Data de nascimento (PF) ou fundação (PJ)[cite: 576].</td>
+<td style="text-align: left;">Usado para a lógica de <strong>Alvo Vulnerável</strong> (Engenharia Social)[cite: 423].</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>municipio_ibge</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">Município de origem do cliente[cite: 577].</td>
+<td style="text-align: left;">Distribuição geográfica.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="2-camada-de-api-backend">2. Camada de API (Backend)<a class="headerlink" href="#2-camada-de-api-backend" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="2-transacoes_dbcoppercontas">2. <code>transacoes_db.copper.contas</code><a class="headerlink" href="#2-transacoes_dbcoppercontas" title="Permanent link">&para;</a></h2>
+<p>Armazena as contas bancárias associadas aos clientes. Esta tabela é crucial por conter o sinal de "Alto Risco"[cite: 579, 581].</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Funcao</th>
-<th style="text-align: left;">Fluxo de Dados</th>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Lógica de Geração/Fraude</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>PixApi</strong></td>
-<td style="text-align: left;">Servico <strong>RESTful</strong> para simular transacoes PIX. Ele gerencia o fluxo de transacoes e contas, persistindo dados no Banco de Dados.</td>
-<td style="text-align: left;">Recebe requisicoes HTTP/REST e persiste via <strong>CRUD (JPA/MySQL)</strong>.</td>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave primária única da conta[cite: 585].</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>AnaliseApi</strong></td>
-<td style="text-align: left;">Servico focado em <strong>analisar dados de transacoes PIX</strong> e detectar transacoes fraudulentas. Ele e o motor antifraude que executa a logica de IA.</td>
-<td style="text-align: left;">E invocado pela <code>PixApi</code> (cliente HTTP) para a predicao.</td>
+<td style="text-align: left;"><code>id_cliente</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave estrangeira para a tabela <code>clientes</code>[cite: 586].</td>
+<td style="text-align: left;">Vínculo com o agente.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>saldo</code></td>
+<td style="text-align: left;"><code>decimal</code></td>
+<td style="text-align: left;">Saldo inicial (amostrado da <strong>Log-Normal</strong>)[cite: 587].</td>
+<td style="text-align: left;">Base para o cálculo da <em>feature</em> <code>valor_vs_saldo_pagador</code>[cite: 1083].</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aberta_em</code></td>
+<td style="text-align: left;"><code>date</code></td>
+<td style="text-align: left;">Data de abertura (condicional ao risco)[cite: 588].</td>
+<td style="text-align: left;">Usada na lógica de <strong>idade da conta</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>is_high_risk</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">1 se a conta foi marcada como <strong>"Alto Risco"</strong> (via Bernoulli), 0 caso contrário[cite: 589].</td>
+<td style="text-align: left;">Sinal fundamental para a lógica de probabilidade de fraude (<span class="arithmatex">\(P(F)\)</span>)[cite: 425].</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="fluxo-da-deteccao-de-fraude-cascata">Fluxo da Deteccao de Fraude (Cascata)<a class="headerlink" href="#fluxo-da-deteccao-de-fraude-cascata" title="Permanent link">&para;</a></h2>
-<p>O fluxo se inicia quando a <strong>PixApi</strong> recebe uma requisicao de transacao e, antes de finaliza-la no banco, invoca a <strong>AnaliseApi</strong> para a predicao em tempo real.</p>
+<h2 id="3-transacoes_dbcopperchaves_pix">3. <code>transacoes_db.copper.chaves_pix</code><a class="headerlink" href="#3-transacoes_dbcopperchaves_pix" title="Permanent link">&para;</a></h2>
+<p>Armazena as chaves PIX. A data de cadastro desta chave é um sinal crucial, pois seu <em>delta</em> em relação à data de abertura da conta é usado para definir a probabilidade de fraude[cite: 594, 595].</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Passo</th>
-<th style="text-align: left;">Componente</th>
-<th style="text-align: left;">Acao Principal</th>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Lógica de Geração/Fraude</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">1. Transacao</td>
-<td style="text-align: left;"><code>App</code> <span class="arithmatex">\(\rightarrow\)</span> <code>PixApi</code></td>
-<td style="text-align: left;">Envio dos dados da transacao (via HTTP/REST).</td>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave primária única da chave[cite: 599].</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td style="text-align: left;">2. Analise</td>
-<td style="text-align: left;"><code>PixApi</code> <span class="arithmatex">\(\rightarrow\)</span> <code>AnaliseApi</code></td>
-<td style="text-align: left;">Invocacao do servico de analise (cliente HTTP/REST).</td>
+<td style="text-align: left;"><code>id_conta</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave estrangeira para a tabela <code>contas</code>[cite: 600].</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td style="text-align: left;">3. Predicao</td>
-<td style="text-align: left;"><code>AnaliseApi</code> (Azure Function)</td>
-<td style="text-align: left;">Carrega modelos de <strong>Keras/TensorFlow</strong> e executa o <strong>pipeline de inferencia em cascata</strong>.</td>
+<td style="text-align: left;"><code>chave</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">O valor da chave (ex: e-mail, CPF, aleatória)[cite: 602].</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td style="text-align: left;">4. Persistencia</td>
-<td style="text-align: left;"><code>PixApi</code> <span class="arithmatex">\(\rightarrow\)</span> Banco de Dados</td>
-<td style="text-align: left;">Salva a transacao e o resultado da analise (fraude ou legitima).</td>
+<td style="text-align: left;"><code>id_tipo_chave</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">Tipo da chave (CPF, e-mail, etc.)[cite: 604].</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cadastrada_em</code></td>
+<td style="text-align: left;"><code>timestamp</code></td>
+<td style="text-align: left;">Data de cadastro (condicional ao risco da conta)[cite: 605].</td>
+<td style="text-align: left;">Usada para definir a condição de <strong>Chave Recente</strong> (<span class="arithmatex">\(C\)</span>)[cite: 426].</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-transacoes_dbcoppertransacoes">4. <code>transacoes_db.copper.transacoes</code><a class="headerlink" href="#4-transacoes_dbcoppertransacoes" title="Permanent link">&para;</a></h2>
+<p>Esta é a tabela de "eventos" principal. Contém todas as transações PIX, tanto legítimas quanto fraudulentas, com os sinais comportamentais inseridos[cite: 606, 607].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Coluna</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Descrição</th>
+<th style="text-align: left;">Funções na Análise de IA/Grafos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>id</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Chave primária única da transação[cite: 612].</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>id_conta_origem</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Conta de origem[cite: 613].</td>
+<td style="text-align: left;">Nó Pagador.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>id_conta_destino</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Conta de destino[cite: 614].</td>
+<td style="text-align: left;">Nó Recebedor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>valor</code></td>
+<td style="text-align: left;"><code>decimal</code></td>
+<td style="text-align: left;">Valor final da transação[cite: 616].</td>
+<td style="text-align: left;">Feature mais importante para o modelo binário[cite: 1106].</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>data</code></td>
+<td style="text-align: left;"><code>timestamp</code></td>
+<td style="text-align: left;">Data e hora da transação[cite: 617].</td>
+<td style="text-align: left;">Usada para extrair o <code>hora_do_dia</code> e aplicar lógica de <strong>Ataque de Madrugada</strong>[cite: 617, 710].</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>is_fraud</code></td>
+<td style="text-align: left;"><code>int</code></td>
+<td style="text-align: left;">0 (Legítima) ou 1 (Fraude)[cite: 618].</td>
+<td style="text-align: left;"><strong>Target</strong> do Modelo Binário.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fraud_type</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Categoria da fraude (ex: <code>engenharia_social</code>, <code>teste_de_conta</code>)[cite: 619].</td>
+<td style="text-align: left;"><strong>Target</strong> do Modelo Multiclasse.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>id_transacao_cadeia_pai</code></td>
+<td style="text-align: left;"><code>uuid</code></td>
+<td style="text-align: left;">Usada para vincular transações de dispersão (filhas) à fraude raiz[cite: 620].</td>
+<td style="text-align: left;">Permite a reconstrução de <strong>Grafos</strong> (Fan-Out/Fan-In)[cite: 509].</td>
 </tr>
 </tbody>
 </table>
