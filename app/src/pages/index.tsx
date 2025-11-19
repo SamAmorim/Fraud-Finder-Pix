@@ -22,7 +22,7 @@ export default function Inicio() {
                         className="mb-12"
                         color="primary.contrastText"
                     >
-                        Bem-vindo à Simulação Pix!
+                        Bem-vindo ao sistema IARA!
                     </Typography>
                     <Box className="flex justify-center">
                         <img
