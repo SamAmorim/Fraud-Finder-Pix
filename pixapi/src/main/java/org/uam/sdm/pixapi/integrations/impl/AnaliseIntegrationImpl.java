@@ -63,7 +63,7 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
                 .bodyValue(analisarTransacaoDto)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response -> {
-                    return response.bodyToMono(AnaliseApiIntegrationResponse.class).flatMap(errorBody -> {
+                    return response.bodyToMono(String.class).flatMap(errorBody -> {
                         System.err.println("Erro na integração com o serviço de análise:  " + errorBody);
                         return Mono.error(new RuntimeException("Erro na análise: " + errorBody));
                     });
