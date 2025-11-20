@@ -40,7 +40,7 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
                 .build();
 
         this.webClient = webClientBuilder
-                .baseUrl("http://localhost:7071/api")
+                .baseUrl(analiseApiUrl)
                 .exchangeStrategies(exchangeStrategies)
                 .build();
     }
