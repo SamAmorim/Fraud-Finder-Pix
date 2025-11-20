@@ -53,7 +53,7 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
         };
 
         Mono<AnaliseApiIntegrationResponse<AnalisarTransacaoIntegrationResponse>> resultado = webClient.post()
-                .uri("/fazer_analise")
+                .uri("/analisar")
                 .bodyValue(analisarTransacaoDto)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError(), response -> {
