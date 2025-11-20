@@ -2,6 +2,7 @@ package org.uam.sdm.pixapi.integrations.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
         this.webClient = webClientBuilder
                 .baseUrl(analiseApiUrl)
                 .exchangeStrategies(exchangeStrategies)
+            
                 .build();
     }
 
@@ -60,8 +62,9 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
                 .header("x-functions-key", analiseApiKey)
                 .bodyValue(analisarTransacaoDto)
                 .retrieve()
-                .onStatus(status -> status.is4xxClientError(), response -> {
+                .onStatus(HttpStatusCode::isError, response -> {
                     return response.bodyToMono(AnaliseApiIntegrationResponse.class).flatMap(errorBody -> {
+                        System.err.println("Erro na integração com o serviço de análise:  " + errorBody);
                         return Mono.error(new RuntimeException("Erro na análise: " + errorBody));
                     });
                 })
