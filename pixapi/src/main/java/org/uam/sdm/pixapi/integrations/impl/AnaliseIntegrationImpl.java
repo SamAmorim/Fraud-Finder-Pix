@@ -24,6 +24,9 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
 
     @Value("${integration.analiseapi.url}")
     private String analiseApiUrl;
+    
+    @Value("${integration.analiseapi.key}")
+    private String analiseApiKey;
 
     public AnaliseIntegrationImpl(WebClient.Builder webClientBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
@@ -54,6 +57,7 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
 
         Mono<AnaliseApiIntegrationResponse<AnalisarTransacaoIntegrationResponse>> resultado = webClient.post()
                 .uri("/analisar")
+                .header("x-functions-key", analiseApiKey)
                 .bodyValue(analisarTransacaoDto)
                 .retrieve()
                 .onStatus(status -> status.is4xxClientError(), response -> {
