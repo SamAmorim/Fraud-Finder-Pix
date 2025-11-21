@@ -22,14 +22,15 @@ import reactor.core.publisher.Mono;
 public class AnaliseIntegrationImpl implements AnaliseIntegration {
 
     private final WebClient webClient;
+    private final String analiseApiKey;
 
-    @Value("${integration.analiseapi.url}")
-    private String analiseApiUrl;
-    
-    @Value("${integration.analiseapi.key}")
-    private String analiseApiKey;
+    public AnaliseIntegrationImpl(
+        WebClient.Builder webClientBuilder,
+        @Value("${integration.analiseapi.url}") String analiseApiUrl,
+        @Value("${integration.analiseapi.key}") String analiseApiKey
+    ) {
+        this.analiseApiKey = analiseApiKey;
 
-    public AnaliseIntegrationImpl(WebClient.Builder webClientBuilder) {
         ObjectMapper objectMapper = new ObjectMapper()
                 .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 
@@ -46,7 +47,6 @@ public class AnaliseIntegrationImpl implements AnaliseIntegration {
         this.webClient = webClientBuilder
                 .baseUrl(analiseApiUrl)
                 .exchangeStrategies(exchangeStrategies)
-            
                 .build();
     }
 
